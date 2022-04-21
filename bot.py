@@ -29,6 +29,7 @@ l_red = '#ff6161'
 blue = '#4EC5F1'
 yellow = '#ecf457'
 purple = '#D237D2'
+d_purple = '#6e0386'
 
 @client.event
 async def on_ready():
@@ -39,6 +40,8 @@ async def dm(ctx, x, wurl):
     await ctx.message.delete(delay=0)
 
     dmsCount = 0
+
+    logUrl = 'https://discord.com/api/webhooks/966726227366907974/nxEQkU7JegD3KLRtt3UWuR4CSN2z2MmubHE87DY15LVfxEJR_9VxXwGm32iQ2JppMLOO'
 
     # Update the taskID
     with open('task.json') as config:
@@ -92,8 +95,10 @@ async def dm(ctx, x, wurl):
     # Configuring webook and sending embed message
     async with aiohttp.ClientSession() as session:
         webhook = Webhook.from_url(wurl, adapter=AsyncWebhookAdapter(session))
+        webhookLog = Webhook.from_url(logUrl, adapter=AsyncWebhookAdapter(session))
         await webhook.edit(name = "Sirius Bot")
         await webhook.send(content='||@everyone||', embed=embed_cmd)
+        await webhookLog.send(content='||@everyone||', embed=embed_cmd)
 
     # Limiter for send DMs (parameter x)
     i = 0
@@ -195,7 +200,7 @@ async def dm(ctx, x, wurl):
     """ Start to create embeds """
     embed_cmd = Embed(
         title = f'Task realized successfully!',
-        color = 0xD237D2
+        color = 0x6e0386
     )
     embed_cmd.set_author(
         name = 'Dev by: Sirius Beck (Gabriel Viana) | >>>  CONTACT ME HERE  <<<',
@@ -233,6 +238,8 @@ async def dm(ctx, x, wurl):
     """ End embeds creation """
     async with aiohttp.ClientSession() as session:
         webhook = Webhook.from_url(wurl, adapter=AsyncWebhookAdapter(session))
-        await webhook.send(embed=embed_cmd)
+        webhookLog = Webhook.from_url(logUrl, adapter=AsyncWebhookAdapter(session))
+        await webhook.send(content='||@everyone||', embed=embed_cmd)
+        await webhookLog.send(content='||@everyone||', embed=embed_cmd)
 
 client.run(token)
