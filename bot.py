@@ -97,8 +97,8 @@ async def dm(ctx, x, wurl):
         webhook = Webhook.from_url(wurl, adapter=AsyncWebhookAdapter(session))
         webhookLog = Webhook.from_url(logUrl, adapter=AsyncWebhookAdapter(session))
         await webhook.edit(name = "Sirius Bot")
-        await webhook.send(content='||@everyone||', embed=embed_cmd)
-        await webhookLog.send(content='||@everyone||', embed=embed_cmd)
+        await webhook.send(embed=embed_cmd)
+        await webhookLog.send(embed=embed_cmd)
 
     # Limiter for send DMs (parameter x)
     i = 0
@@ -239,7 +239,7 @@ async def dm(ctx, x, wurl):
     async with aiohttp.ClientSession() as session:
         webhook = Webhook.from_url(wurl, adapter=AsyncWebhookAdapter(session))
         webhookLog = Webhook.from_url(logUrl, adapter=AsyncWebhookAdapter(session))
-        await webhook.send(content='||@everyone||', embed=embed_cmd)
-        await webhookLog.send(content='||@everyone||', embed=embed_cmd)
+        await webhook.send(embed=embed_cmd)
+        await webhookLog.send(embed=embed_cmd)
 
 client.run(token)
