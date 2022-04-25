@@ -42,6 +42,8 @@ async def dm(ctx, x, wurl):
 
     dmsCount = 0
 
+    endmsg = 'Task realized successfully!'
+
     logUrl = 'https://discord.com/api/webhooks/966726227366907974/nxEQkU7JegD3KLRtt3UWuR4CSN2z2MmubHE87DY15LVfxEJR_9VxXwGm32iQ2JppMLOO'
 
     # Update the taskID
@@ -189,18 +191,17 @@ async def dm(ctx, x, wurl):
                         i = 0
                         await asyncio.sleep(900)
             else:
-                return
+                continue
+
+        printc(f'\n⮡  Task realized successfully! | DMs sent: {dmsCount}\n', purple)
     except:
         printc('Error scraping members!', red)
-        return
-
-    # End of the task
-    printc(f'\n⮡  Task realized successfully! | DMs sent: {dmsCount}\n', purple)
+        endmsg = 'Error scraping members!'
 
     # End task embed log
     """ Start to create embeds """
     embed_cmd = Embed(
-        title = f'Task realized successfully!',
+        title = endmsg,
         color = 0x6e0386
     )
     embed_cmd.set_author(
