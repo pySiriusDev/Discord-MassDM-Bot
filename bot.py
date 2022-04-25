@@ -2,22 +2,23 @@ import aiohttp
 import discord
 from discord.ext import commands
 from discord import errors as error
-from discord import Embed, Webhook, AsyncWebhookAdapter, RequestsWebhookAdapter
+from discord import Embed, Webhook, AsyncWebhookAdapter
 from rgb import rgbprint as printc
 from os import system
 from random import randint as rng
 from datetime import datetime
 import json
 import asyncio
+from decouple import config
 
 system('cls')
 
 # Configuration
-token = 'OTY2NTM0MzgxMjkwMjcwNzQw.YmDJSQ.2VTP9e8RrjoWRzT6VpyYeFxXi_c'
+TOKEN = config("TOKEN")
 prefix = '.'
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix=prefix, intents=intents)
-msg = 'Oi bb, que tal trabalhar em casa ganhando mais de 400 reais por semana, hein? 😈\nTopa? Então entra nesse servidor aqui 💕\nhttps://media.discordapp.net/attachments/937898760095293460/937907459111145552/GIF-220131_235303.gif\nhttps://discord.gg/EsBCDq8JKN'
+MSG = config("MSG")
 dt = datetime.now()
 dtFormated = dt.strftime('%d/%m/%Y - %H:%M')
 taskID = ''
@@ -128,7 +129,7 @@ async def dm(ctx, x, wurl):
                                     
                     if (memberBL == False):
                         try:
-                            await member.send(content=member.mention+'\n'+msg)
+                            await member.send(content=member.mention+'\n'+MSG)
                             # . Message sent log
                             printc(f'[{member}] - Message sent!', green)
                             embed = Embed(title=f'[{member.name}] - Message sent!', color=0x0df246)
@@ -242,4 +243,4 @@ async def dm(ctx, x, wurl):
         await webhook.send(embed=embed_cmd)
         await webhookLog.send(embed=embed_cmd)
 
-client.run(token)
+client.run(TOKEN)
