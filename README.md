@@ -5,8 +5,9 @@
 A Discord server bot that automatically sends messages to a certain number of members.
 
 ## How to use
-An important warning: if you are here, I will assume that you already know how a bot works on discord and how to develop in python, I will not teach any of these 2 topics here.
-Come on...
+**An important warning: if you are here, I will assume that you already know how a bot works on discord and how to develop in python, I will not teach any of these 2 topics here.**
+<br>
+**Come on...**
 ```
 pip install -r requirements.txt
 ```
