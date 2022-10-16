@@ -15,7 +15,7 @@ system('cls')
 
 # Configuration
 TOKEN = config("TOKEN")
-prefix = '.'
+prefix = config("PREFIX")
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix=prefix, intents=intents)
 MSG = config("MSG")
