@@ -1,4 +1,4 @@
-# Sirius-Bot
+# Discord MassDM Bot
 [![Support Me on Ko-fi](https://i.imgur.com/7Cm07AZ.png)](https://ko-fi.com/siriusbeck)
 
 ## What is this?
